@@ -8,6 +8,7 @@ public class SistemaEpiApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SistemaEpiApplication.class, args);
+		System.out.println("Teste");
 	}
 
 }
