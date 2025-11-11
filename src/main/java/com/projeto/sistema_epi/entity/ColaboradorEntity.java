@@ -1,9 +1,14 @@
 package com.projeto.sistema_epi.entity;
 
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.time.LocalDate;
-
+@Getter
+@Setter
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "departamento")
 public class ColaboradorEntity {
@@ -30,7 +35,5 @@ public class ColaboradorEntity {
 
     @Column(name = "status_ativo")
     private boolean statusAtivo;
-
-
 
 }
