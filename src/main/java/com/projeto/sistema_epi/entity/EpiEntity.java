@@ -1,5 +1,6 @@
 package com.projeto.sistema_epi.entity;
 
+import jakarta.persistence.Entity;
 import lombok.*;
 
 @Getter
@@ -9,8 +10,10 @@ import lombok.*;
 @NoArgsConstructor
 
 
-
+@Entity
 public class EpiEntity {
+
+
 
 
 }
