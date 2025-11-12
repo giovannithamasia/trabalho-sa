@@ -1,6 +1,9 @@
 package com.projeto.sistema_epi.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -10,12 +13,8 @@ import java.time.LocalDate;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "epi")
-
 
 public class EpiEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_epi")
@@ -33,11 +32,5 @@ public class EpiEntity {
     @Column(name = "tamanho")
     private String tamanho;
 
-    @Column(name = "validade")
-    private LocalDate validade;
 
-    @Column(name = "situacao")
-    private String situacao;
 }
-
-
