@@ -20,33 +20,23 @@ import java.util.Date;
         private int idColaborador;
         private int idEpi;
 
-        @NotBlank
-        private String nome;
 
-        @NotBlank
-        private String cpf;
-
-        @NotBlank
-        private String cargo;
-
-        @NotBlank
-        private String setor;
-
-        @NotNull
-        @PastOrPresent
+        @NotNull(massage = "Data do Emprestimo não pode ser nula")
+        @PastOrPresent(massage = "Data do emprestimo não pode ser futura")
         private Date dataEmprestimo;
 
-        @NotNull
+        @NotNull(massage = "Data Prevista pra devolução não pode ser nula")
         private Date dataPrevistaDevolução;
 
-        @NotNull
-        @PastOrPresent
+        @NotNull(massage = "Data da devolução não pode ser nula")
+        @PastOrPresent(massage = "Data da devolução não pode ser futura")
         private Date dataDevolucao;
 
-        @NotNull
+        @NotNull(massage = "Status não pode ser nulo")
+        @Size(max = 20, masage = "Status não pode ultrapassar de 20 caracteres")
         private String status;
 
-        @NotNull
+        @Size(max = 255, massage = "Observação mão pode ultrapassar 255 caracteres")
         private String observacao;
     }
 
