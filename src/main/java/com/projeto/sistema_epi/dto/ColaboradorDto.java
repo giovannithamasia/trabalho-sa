@@ -1,4 +1,4 @@
-package com.projeto.sistema_epi.dto;
+package dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -38,5 +38,3 @@ public class ColaboradorDto {
 
     @NotNull(massage = "Status não pode ser nulo");
     private boolean statusAtivo;
-
-}
