@@ -4,4 +4,8 @@ import com.projeto.sistema_epi.entity.ColaboradorEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ColaboradorRepository extends JpaRepository<ColaboradorEntity,Long> {
+
+    boolean existsByCpf(String cpf);
+
+    boolean existsByCpfAndIdColaboradorNot(String cpf, int id);
 }
