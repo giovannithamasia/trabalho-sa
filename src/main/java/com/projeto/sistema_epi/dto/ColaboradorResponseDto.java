@@ -13,20 +13,13 @@ import java.util.Date;
 @Data
 public class ColaboradorResponseDto {
 
-    private int idColaborador;
-
-
     private String nome;
-
 
     private String cargo;
 
-
     private String setor;
 
-
     private Date dataAdmissao;
-
 
     private boolean statusAtivo;
 }
