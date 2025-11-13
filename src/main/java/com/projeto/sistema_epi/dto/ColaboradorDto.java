@@ -1,8 +1,9 @@
-package dto;
+package com.projeto.sistema_epi.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.util.Date;
@@ -17,24 +18,25 @@ public class ColaboradorDto {
 
     private int idColaborador;
 
-    @NotBlank(massage = "Nome não pode ser vazio")
+    @NotBlank(message = "Nome não pode ser vazio")
     private String nome;
 
     @Size(max = 11, message = "Cpf não pode ultrapassar 11 caracteres")
-    @NotBlank(massage = "Cpf não pode ser vazio")
+    @NotBlank(message = "Cpf não pode ser vazio")
     private String cpf;
 
-    @NotBlank(massage = "Cargo não pode ser vazio")
+    @NotBlank(message = "Cargo não pode ser vazio")
     @Size(max = 80, message = "Cargo não pode ultrapassar 80 caracteres")
     private String cargo;
 
-    @NotBlank(massage = "Setor não pode ser vazio")
-    @Size(max = 80, message = "setor não pode ultrapassar 80 caracteres")
+    @NotBlank(message = "Setor não pode ser vazio")
+    @Size(max = 80, message = "Setor não pode ultrapassar 80 caracteres")
     private String setor;
 
-    @NotNull(massage = "Data da adimição nao pode ser nula");
-    @PastOrPresent(massage = "Data de adimição nao pode ser ");
+    @NotNull(message = "Data da adimição não pode ser nula")
+    @PastOrPresent(message = "Data de adimição não pode ser futura")
     private Date dataAdmissao;
 
-    @NotNull(massage = "Status não pode ser nulo");
+    @NotNull(message = "Status não pode ser nulo")
     private boolean statusAtivo;
+}
