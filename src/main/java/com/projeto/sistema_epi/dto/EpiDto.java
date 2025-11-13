@@ -1,4 +1,4 @@
-package com.projeto.sistema_epi.dto;
+package dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -17,19 +17,23 @@ public class EpiDto {
 
     private int idEpi;
 
-    @NotBlank
+    @NotBlank(massage = "Nome não pode ser nulo")
+    @Size(max = 120, massage = "Nome pode ultrapassar 120 caracteres")
     private String nome;
 
-    @NotBlank
+    @Size(max = 80, massage = "Tipo pode ultrapassar 80 caracteres")
     private String tipo;
 
-    @NotBlank
+    @Size(max = 255, massage = "Descricão pode ultrapassar 255 caracteres")
+    private String descricao;
+
+    @Size(max = 20, massage = "Tamanho pode ultrapassar 255 caracteres")
     private String tamanho;
 
-    @NotNull
+    @NotNull(massage = "Validade não pode ser nula")
     private Date validade;
 
-    @NotBlank
+    @Size(max = 20, massage = "Situacao pode ultrapassar 20 caracteres")
     private String situacao;
 
 }

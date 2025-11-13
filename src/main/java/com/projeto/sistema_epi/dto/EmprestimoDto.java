@@ -1,4 +1,5 @@
-package com.projeto.sistema_epi.dto;
+
+package dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -8,45 +9,34 @@ import lombok.*;
 import java.util.Date;
 
 
-    @NoArgsConstructor
-    @AllArgsConstructor
-    @Getter
-    @Setter
-    @ToString
-    @Data
-    public class EmprestimoDto {
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@ToString
+@Data
+public class EmprestimoDto {
 
-        private int idEmprestimo;
-        private int idColaborador;
-        private int idEpi;
+    private int idEmprestimo;
+    private int idColaborador;
+    private int idEpi;
 
-        @NotBlank
-        private String nome;
 
-        @NotBlank
-        private String cpf;
+    @NotNull(massage = "Data do Emprestimo não pode ser nula")
+    @PastOrPresent(massage = "Data do emprestimo não pode ser futura")
+    private Date dataEmprestimo;
 
-        @NotBlank
-        private String cargo;
+    @NotNull(massage = "Data Prevista pra devolução não pode ser nula")
+    private Date dataPrevistaDevolução;
 
-        @NotBlank
-        private String setor;
+    @NotNull(massage = "Data da devolução não pode ser nula")
+    @PastOrPresent(massage = "Data da devolução não pode ser futura")
+    private Date dataDevolucao;
 
-        @NotNull
-        @PastOrPresent
-        private Date dataEmprestimo;
+    @NotNull(massage = "Status não pode ser nulo")
+    @Size(max = 20, masage = "Status não pode ultrapassar de 20 caracteres")
+    private String status;
 
-        @NotNull
-        private Date dataPrevistaDevolução;
-
-        @NotNull
-        @PastOrPresent
-        private Date dataDevolucao;
-
-        @NotNull
-        private String status;
-
-        @NotNull
-        private String observacao;
-    }
-
+    @Size(max = 255, massage = "Observação mão pode ultrapassar 255 caracteres")
+    private String observacao;
+}
