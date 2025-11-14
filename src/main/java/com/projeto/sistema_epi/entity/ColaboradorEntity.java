@@ -4,13 +4,15 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+
+@Entity
+@Table(name = "colaborador")
+
 @Getter
 @Setter
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "departamento")
 public class ColaboradorEntity {
 
     @Id
