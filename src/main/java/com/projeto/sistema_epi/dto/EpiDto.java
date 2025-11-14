@@ -6,6 +6,7 @@ import jakarta.validation.constraints.PastOrPresent;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @NoArgsConstructor
@@ -32,7 +33,7 @@ public class EpiDto {
     private String tamanho;
 
     @NotNull(message = "Validade não pode ser nula")
-    private Date validade;
+    private LocalDate validade;
 
     @Size(max = 20, message = "Situacao pode ultrapassar 20 caracteres")
     private String situacao;

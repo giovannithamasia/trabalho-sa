@@ -3,6 +3,7 @@ package com.projeto.sistema_epi.dto;
 
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @NoArgsConstructor
@@ -19,7 +20,7 @@ public class ColaboradorResponseDto {
 
     private String setor;
 
-    private Date dataAdmissao;
+    private LocalDate dataAdmissao;
 
     private boolean statusAtivo;
 }

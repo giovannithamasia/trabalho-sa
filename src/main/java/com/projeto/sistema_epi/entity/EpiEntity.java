@@ -15,7 +15,7 @@ public class EpiEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_epi")
-    private Long idEpi;
+    private int idEpi;
 
     @Column(name = "nome_epi")
     private String nomeEpi;
