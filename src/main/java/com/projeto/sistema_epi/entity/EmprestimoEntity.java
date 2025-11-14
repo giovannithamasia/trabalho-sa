@@ -4,13 +4,15 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "emprestimo")
+
 @Getter
 @Setter
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
 public class EmprestimoEntity {
 
     @Id

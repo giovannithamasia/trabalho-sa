@@ -5,13 +5,16 @@ import lombok.*;
 
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "epi")
+
 @Getter
 @Setter
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
 public class EpiEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_epi")
@@ -28,4 +31,11 @@ public class EpiEntity {
 
     @Column(name = "tamanho")
     private String tamanho;
+
+    @Column(name = "validade")
+    private LocalDate validade;
+
+    @Column (name = "situacao")
+    private String situacao;
+
 }
