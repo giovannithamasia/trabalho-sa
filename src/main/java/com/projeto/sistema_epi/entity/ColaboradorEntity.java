@@ -16,7 +16,7 @@ public class ColaboradorEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_colaborador")
-    private Long idColaborador;
+    private int idColaborador;
 
     @Column (name = "nome")
     private String nome;

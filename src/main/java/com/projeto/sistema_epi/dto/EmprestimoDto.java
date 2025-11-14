@@ -7,6 +7,7 @@ import jakarta.validation.constraints.PastOrPresent;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 
@@ -28,11 +29,11 @@ public class EmprestimoDto {
     private Date dataEmprestimo;
 
     @NotNull(message = "Data Prevista pra devolução não pode ser nula")
-    private Date dataPrevistaDevolução;
+    private LocalDate dataPrevistaDevolução;
 
     @NotNull(message = "Data da devolução não pode ser nula")
     @PastOrPresent(message = "Data da devolução não pode ser futura")
-    private Date dataDevolucao;
+    private LocalDate dataDevolucao;
 
     @NotNull(message = "Status não pode ser nulo")
     @Size(max = 20, message = "Status não pode ultrapassar de 20 caracteres")

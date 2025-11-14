@@ -16,7 +16,7 @@ public class EmprestimoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_emprestimo")
-    private Long idEmprestimo;
+    private int idEmprestimo;
 
     @ManyToOne
     @JoinColumn (name = "id_colaborador",referencedColumnName = "id_colaborador")
