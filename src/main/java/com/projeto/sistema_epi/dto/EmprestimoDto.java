@@ -29,7 +29,7 @@ public class EmprestimoDto {
     private LocalDate dataEmprestimo;
 
     @NotNull(message = "Data Prevista pra devolução não pode ser nula")
-    private LocalDate dataPrevistaDevolução;
+    private LocalDate dataPrevistaDevolucao;
 
     @NotNull(message = "Data da devolução não pode ser nula")
     @PastOrPresent(message = "Data da devolução não pode ser futura")

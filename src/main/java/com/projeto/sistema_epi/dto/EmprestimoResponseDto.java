@@ -19,7 +19,7 @@ public class EmprestimoResponseDto {
 
     private LocalDate dataEmprestimo;
 
-    private LocalDate dataPrevistaDevolução;
+    private LocalDate dataPrevistaDevolucao;
 
     private LocalDate dataDevolucao;
 
