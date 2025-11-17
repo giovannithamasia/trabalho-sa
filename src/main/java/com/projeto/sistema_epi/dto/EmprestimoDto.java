@@ -31,13 +31,8 @@ public class EmprestimoDto {
     @NotNull(message = "Data Prevista pra devolução não pode ser nula")
     private LocalDate dataPrevistaDevolucao;
 
-    @NotNull(message = "Data da devolução não pode ser nula")
     @PastOrPresent(message = "Data da devolução não pode ser futura")
     private LocalDate dataDevolucao;
-
-    @NotNull(message = "Status não pode ser nulo")
-    @Size(max = 20, message = "Status não pode ultrapassar de 20 caracteres")
-    private String status;
 
     @Size(max = 255, message = "Observação mão pode ultrapassar 255 caracteres")
     private String observacao;

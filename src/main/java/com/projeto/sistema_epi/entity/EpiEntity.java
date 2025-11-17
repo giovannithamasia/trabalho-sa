@@ -2,6 +2,7 @@ package com.projeto.sistema_epi.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.ColumnTransformer;
 
 import java.time.LocalDate;
 
@@ -35,6 +36,7 @@ public class EpiEntity {
     @Column(name = "validade")
     private LocalDate validade;
 
+    @ColumnTransformer(write = "UPPER(?)")
     @Column (name = "situacao")
     private String situacao;
 

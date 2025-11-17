@@ -34,7 +34,6 @@ public class ColaboradorDto {
     @Size(max = 80, message = "Setor não pode ultrapassar 80 caracteres")
     private String setor;
 
-
     @PastOrPresent(message = "Data de adimição não pode ser futura")
     private LocalDate dataAdmissao;
 
