@@ -36,7 +36,11 @@ public class EmprestimoService {
 
         EpiEntity epi = epiRepo.findById(emprestimoDto.getIdEpi())
                 .orElseThrow(() -> new RuntimeException("EPI não existe"));
-        
+
+        if (!colaborador.isStatusAtivo()){
+            throw new RuntimeException("Status do colaborador não está ativo");
+        }
+
         if (epi.getValidade().isBefore(LocalDate.now())) {
             throw new RuntimeException("EPI com validade vencida não pode ser emprestado");
         }

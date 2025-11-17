@@ -3,6 +3,7 @@ package com.projeto.sistema_epi.controller;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+
 @Component
 public class Controller  implements CommandLineRunner {
 
