@@ -28,6 +28,7 @@ public class EpiController {
         System.out.println("Tamanho: ");
         epiDto.setTamanho(sc.nextLine());
         LocalDate validade = LocalDate.of(2025, 11, 30);
+        epiDto.setValidade(validade);
         System.out.println("Data de validade " + validade);
         System.out.println("Situacao: ");
         epiDto.setSituacao(sc.nextLine());
@@ -53,6 +54,7 @@ public class EpiController {
         System.out.println("Tamanho: ");
         epiDto.setTamanho(sc.nextLine());
         LocalDate validade = LocalDate.of(2025, 11, 30);
+        epiDto.setValidade(validade);
         System.out.println("Data de validade " + validade);
         System.out.println("Situacao: ");
         epiDto.setSituacao(sc.nextLine());
@@ -63,18 +65,19 @@ public class EpiController {
 
     }
     public void deletar(){
-        System.out.println("Informe o id do EPI a ser excluido");
-        Long idRemoverEPI = sc.nextLong();
+        System.out.println("Informe o id para ser excluido");
+        Long idRemover = sc.nextLong();
+
+        sc.nextLine();
 
         System.out.println("tem certeza que quer deletar (digite 'excluir' para deletar)");
         String resposta = sc.nextLine();
 
-        if (resposta.equalsIgnoreCase("excluir")){
-
+        if (!resposta.equalsIgnoreCase("excluir")){
+            System.out.println("Exclusão cancelada.");
         }
+        epiService.deletarEpi(idRemover);
 
-        epiService.deletarEpi(idRemoverEPI);
-
-        System.out.println("EPI removido com sucesso!!");
+        System.out.println("Colaborador removido por id!!");
     }
 }
