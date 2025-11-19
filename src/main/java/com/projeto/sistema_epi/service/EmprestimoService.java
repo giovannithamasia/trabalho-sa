@@ -1,5 +1,4 @@
 package com.projeto.sistema_epi.service;
-
 import com.projeto.sistema_epi.dto.EmprestimoDto;
 import com.projeto.sistema_epi.dto.EmprestimoResponseDto;
 import com.projeto.sistema_epi.entity.ColaboradorEntity;
@@ -16,7 +15,6 @@ import org.springframework.validation.annotation.Validated;
 
 import jakarta.validation.Valid;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +22,7 @@ import java.util.List;
 @Validated
 @RequiredArgsConstructor
 public class EmprestimoService {
+
 
     private final EmprestimoRepository emprestimoRepo;
     private final ColaboradorRepository colaboradorRepo;
@@ -39,21 +38,19 @@ public class EmprestimoService {
                 .orElseThrow(() -> new RuntimeException("EPI não existe"));
 
         if (!colaborador.isStatusAtivo()){
-            throw new RuntimeException("Status do colaborador não está ativo");
+            throw new RuntimeException("Colaborador não está ativo");
         }
 
-        if (epi.getValidade().atStartOfDay().isBefore(LocalDateTime.now())) {
+        if (epi.getValidade().isBefore(LocalDate.now())) {
             throw new RuntimeException("EPI com validade vencida não pode ser emprestado");
         }
-        boolean epiEmprestado = emprestimoRepo
-                .existsByEpiIdEpiAndDataDevolucaoIsNull(emprestimoDto.getIdEpi());
 
-        if (epiEmprestado) {
+        if (emprestimoRepo.existsByEpiIdEpiAndDataDevolucaoIsNull
+                (emprestimoDto.getIdEpi())) {
             throw new RuntimeException("Este EPI já está emprestado e não foi devolvido ainda.");
         }
 
-        if  (emprestimoDto.getDataPrevistaDevolucao()
-                .atStartOfDay()
+        if (emprestimoDto.getDataPrevistaDevolucao()
                 .isBefore(emprestimoDto.getDataEmprestimo())) {
             throw new RuntimeException("Data prevista não pode ser anterior ao empréstimo");
         }
