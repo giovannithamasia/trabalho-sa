@@ -3,7 +3,7 @@ package com.projeto.sistema_epi.dto;
 import lombok.*;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,11 +18,11 @@ public class EmprestimoResponseDto {
 
     private String nomeEpi;
 
-    private LocalDateTime dataEmprestimo;
+    private LocalDate dataEmprestimo;
 
     private LocalDate dataPrevistaDevolucao;
 
-    private LocalDateTime dataDevolucao;
+    private LocalDate dataDevolucao;
 
     private String status;
 
