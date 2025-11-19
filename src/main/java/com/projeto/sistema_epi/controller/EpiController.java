@@ -41,7 +41,7 @@ public class EpiController {
         EpiDto epiDto = new EpiDto();
 
         System.out.println("Informe o id que vc deseja  atualizar da EPI: ");
-        int idEPI = sc.nextInt();
+        Long idEPI = sc.nextLong();
         sc.nextLine();
 
         System.out.println("Nome do EPI: ");
@@ -64,7 +64,7 @@ public class EpiController {
     }
     public void deletar(){
         System.out.println("Informe o id do EPI a ser excluido");
-        int idRemoverEPI = sc.nextInt();
+        Long idRemoverEPI = sc.nextLong();
 
         System.out.println("tem certeza que quer deletar (digite 'excluir' para deletar)");
         String resposta = sc.nextLine();
