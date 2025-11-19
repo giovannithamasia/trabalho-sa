@@ -8,8 +8,7 @@ import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.time.LocalDate;
-
-
+import java.time.LocalDateTime;
 
 
 @NoArgsConstructor
@@ -27,13 +26,13 @@ public class EmprestimoDto {
 
     @NotNull(message = "Data do Emprestimo não pode ser nula")
     @PastOrPresent(message = "Data do emprestimo não pode ser futura")
-    private LocalDate dataEmprestimo;
+    private LocalDateTime dataEmprestimo;
 
     @NotNull(message = "Data Prevista pra devolução não pode ser nula")
     private LocalDate dataPrevistaDevolucao;
 
     @PastOrPresent(message = "Data da devolução não pode ser futura")
-    private LocalDate dataDevolucao;
+    private LocalDateTime dataDevolucao;
 
     @Size(max = 255, message = "Observação mão pode ultrapassar 255 caracteres")
     private String observacao;

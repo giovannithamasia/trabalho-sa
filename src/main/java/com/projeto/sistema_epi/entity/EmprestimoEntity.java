@@ -30,13 +30,13 @@ public class EmprestimoEntity {
     private EpiEntity epi;
 
     @Column(name = "data_emprestimo")
-    private LocalDate dataEmprestimo;
+    private LocalDateTime dataEmprestimo;
 
     @Column (name = "data_prevista_devolucao")
     private LocalDate dataPrevistaDevolucao;
 
     @Column (name = "data_devolucao")
-    private LocalDate dataDevolucao;
+    private LocalDateTime dataDevolucao;
 
     @Column (name = "status")
     private String status;
