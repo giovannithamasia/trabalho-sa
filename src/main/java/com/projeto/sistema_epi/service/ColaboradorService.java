@@ -65,7 +65,7 @@ public class ColaboradorService {
         return colaboradores;
     }
 
-    public void atualizarColaborador(int id, @Valid ColaboradorDto colaborador) {
+    public void atualizarColaborador(Long id, @Valid ColaboradorDto colaborador) {
 
         ColaboradorEntity colaboradorEntity = colaboradorRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Colaborador não encontrado"));
@@ -85,7 +85,7 @@ public class ColaboradorService {
         colaboradorRepository.save(colaboradorEntity);
     }
 
-    public void deletarColaborador(int id) {
+    public void deletarColaborador(Long id) {
 
         colaboradorRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Colaborador não encontrado"));
