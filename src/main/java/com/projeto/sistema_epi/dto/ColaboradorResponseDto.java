@@ -4,7 +4,6 @@ package com.projeto.sistema_epi.dto;
 import lombok.*;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 @NoArgsConstructor
 @AllArgsConstructor
