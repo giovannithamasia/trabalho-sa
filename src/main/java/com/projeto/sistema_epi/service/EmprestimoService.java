@@ -15,6 +15,7 @@ import org.springframework.validation.annotation.Validated;
 
 import jakarta.validation.Valid;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,7 +52,7 @@ public class EmprestimoService {
         }
 
         if (emprestimoDto.getDataPrevistaDevolucao()
-                .isBefore(emprestimoDto.getDataEmprestimo())) {
+                .isBefore(emprestimoDto.getDataEmprestimo().toLocalDate())) {
             throw new RuntimeException("Data prevista não pode ser anterior ao empréstimo");
         }
 
@@ -79,7 +80,7 @@ public class EmprestimoService {
             throw new RuntimeException("Este empréstimo já foi devolvido");
         }
 
-        emprestimoEntity.setDataDevolucao(LocalDate.now());
+        emprestimoEntity.setDataDevolucao(LocalDateTime.now());
         emprestimoEntity.setStatus("DEVOLVIDO");
 
         EpiEntity epi = emprestimoEntity.getEpi();
