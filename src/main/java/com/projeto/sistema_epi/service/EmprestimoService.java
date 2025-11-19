@@ -16,6 +16,7 @@ import org.springframework.validation.annotation.Validated;
 
 import jakarta.validation.Valid;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,7 +42,7 @@ public class EmprestimoService {
             throw new RuntimeException("Status do colaborador não está ativo");
         }
 
-        if (epi.getValidade().isBefore(LocalDate.now())) {
+        if (epi.getValidade().atStartOfDay().isBefore(LocalDateTime.now())) {
             throw new RuntimeException("EPI com validade vencida não pode ser emprestado");
         }
         boolean epiEmprestado = emprestimoRepo
@@ -51,7 +52,8 @@ public class EmprestimoService {
             throw new RuntimeException("Este EPI já está emprestado e não foi devolvido ainda.");
         }
 
-        if (emprestimoDto.getDataPrevistaDevolucao()
+        if  (emprestimoDto.getDataPrevistaDevolucao()
+                .atStartOfDay()
                 .isBefore(emprestimoDto.getDataEmprestimo())) {
             throw new RuntimeException("Data prevista não pode ser anterior ao empréstimo");
         }
@@ -71,7 +73,7 @@ public class EmprestimoService {
     }
 
     //update
-    public void devolverEpi(int idEmprestimo) {
+    public void devolverEpi(Long idEmprestimo) {
 
         EmprestimoEntity emprestimoEntity = emprestimoRepo.findById(idEmprestimo)
                 .orElseThrow(() -> new RuntimeException("Empréstimo não encontrado"));
