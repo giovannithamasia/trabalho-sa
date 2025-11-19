@@ -78,7 +78,7 @@ public class Controller  implements CommandLineRunner {
                         break;
                     case 10:
                         System.out.println("Informe o id do Emprestimo a ser devolvido: ");
-                        int idDevolvido = sc.nextInt();
+                        Long idDevolvido = sc.nextLong();
 
                         emprestimoService.devolverEpi(idDevolvido);
                         break;
