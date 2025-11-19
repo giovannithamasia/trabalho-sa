@@ -7,7 +7,7 @@ import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.time.LocalDate;
-import java.util.Date;
+
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,7 +17,7 @@ import java.util.Date;
 @Data
 public class ColaboradorDto {
 
-    private int idColaborador;
+    private Long idColaborador;
 
     @NotBlank(message = "Nome não pode ser vazio")
     private String nome;
