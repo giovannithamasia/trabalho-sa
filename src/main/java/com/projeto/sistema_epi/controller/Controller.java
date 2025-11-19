@@ -47,6 +47,7 @@ public class Controller  implements CommandLineRunner {
                 switch (opcao) {
                     case 1:
                       colaboradorController.cadastrar();
+                      break;
                     case 2:
                         System.out.println(colaboradorService.listarColaboradores());
                         break;
