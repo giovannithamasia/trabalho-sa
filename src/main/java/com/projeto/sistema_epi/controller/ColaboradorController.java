@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Scanner;
 
 @Component
@@ -29,9 +28,11 @@ public class ColaboradorController {
         dto.setSetor(sc.nextLine());
         LocalDate date = LocalDate.of(2020, 10, 11);
         System.out.println("Data de admissao " + date);
+        dto.setDataAdmissao(date);
         System.out.println("Status ativo");
         dto.setStatusAtivo(sc.nextBoolean());
 
+        sc.nextLine();
 
         colaboradorService.cadastroColaborador(dto);
 
@@ -53,9 +54,11 @@ public class ColaboradorController {
         dto.setSetor(sc.nextLine());
         LocalDate date = LocalDate.of(2020, 10, 11);
         System.out.println("Data de admissao " + date);
+        dto.setDataAdmissao(date);
         System.out.println("Status ativo");
         dto.setStatusAtivo(sc.nextBoolean());
 
+        sc.nextLine();
 
         colaboradorService.atualizarColaborador(id, dto);
 
@@ -65,13 +68,14 @@ public class ColaboradorController {
         System.out.println("Informe o id a ser excluido");
         Long idRemover = sc.nextLong();
 
+        sc.nextLine();
+
         System.out.println("tem certeza que quer deletar (digite 'excluir' para deletar)");
         String resposta = sc.nextLine();
 
-        if (resposta.equalsIgnoreCase("excluir")){
-
+        if (!resposta.equalsIgnoreCase("excluir")){
+            System.out.println("Exclusão cancelada.");
         }
-
         colaboradorService.deletarColaborador(idRemover);
 
         System.out.println("Colaborador removido por id!!");
