@@ -41,9 +41,9 @@ public class ColaboradorController {
         ColaboradorDto dto = new ColaboradorDto();
 
         System.out.println("Informe o id que vc deseja atualizar");
-        int id = sc.nextInt();
+        Long id = sc.nextLong();
         sc.nextLine();
-        System.out.println("Nome: ");
+        System.out.println("Nome do Colaborador: ");
         dto.setNome(sc.nextLine());
         System.out.println("Cpf: ");
         dto.setCpf(sc.nextLine());
@@ -63,7 +63,7 @@ public class ColaboradorController {
     }
     public void deletar(){
         System.out.println("Informe o id a ser excluido");
-        int idRemover = sc.nextInt();
+        Long idRemover = sc.nextLong();
 
         System.out.println("tem certeza que quer deletar (digite 'excluir' para deletar)");
         String resposta = sc.nextLine();
