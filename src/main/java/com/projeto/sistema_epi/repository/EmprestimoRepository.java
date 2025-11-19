@@ -3,11 +3,11 @@ package com.projeto.sistema_epi.repository;
 import com.projeto.sistema_epi.entity.EmprestimoEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface EmprestimoRepository extends JpaRepository<EmprestimoEntity, Integer> {
+public interface EmprestimoRepository extends JpaRepository<EmprestimoEntity, Long> {
 
-    boolean existsByColaboradorIdColaborador(int idColaborador);
+    boolean existsByColaboradorIdColaborador(Long idColaborador);
 
-    boolean existsByEpiIdEpi(int idEpi);
+    boolean existsByEpiIdEpi(Long idEpi);
 
-    boolean existsByEpiIdEpiAndDataDevolucaoIsNull(int idEpi);
+    boolean existsByEpiIdEpiAndDataDevolucaoIsNull(Long idEpi);
 }
