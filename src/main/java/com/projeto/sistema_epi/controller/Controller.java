@@ -1,19 +1,14 @@
 package com.projeto.sistema_epi.controller;
 
-import com.projeto.sistema_epi.dto.ColaboradorDto;
-import com.projeto.sistema_epi.dto.EmprestimoDto;
-import com.projeto.sistema_epi.dto.EpiDto;
 import com.projeto.sistema_epi.menu.Menu;
 import com.projeto.sistema_epi.service.ColaboradorService;
 import com.projeto.sistema_epi.service.EmprestimoService;
 import com.projeto.sistema_epi.service.EpiService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDate;
-import java.util.InputMismatchException;
+
 import java.util.Scanner;
 
 
