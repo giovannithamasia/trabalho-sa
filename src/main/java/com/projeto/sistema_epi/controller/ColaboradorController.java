@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 @Component
@@ -14,6 +15,8 @@ public class ColaboradorController {
 
     private final ColaboradorService colaboradorService;
     private final Scanner sc = new Scanner(System.in);
+
+    private final DateTimeFormatter date = DateTimeFormatter.ofPattern("dd/MM/yyyyy");
 
     public void cadastrar(){
         ColaboradorDto dto = new ColaboradorDto();
@@ -26,9 +29,11 @@ public class ColaboradorController {
         dto.setCargo(sc.nextLine());
         System.out.println("Setor: ");
         dto.setSetor(sc.nextLine());
-        LocalDate date = LocalDate.of(2020, 10, 11);
-        System.out.println("Data de admissao " + date);
-        dto.setDataAdmissao(date);
+
+        System.out.println("Data de validade (dd/MM/yyyy): ");
+        LocalDate dataAdmissao = LocalDate.parse(sc.nextLine(),date);
+        dto.setDataAdmissao(dataAdmissao);
+
         System.out.println("Status ativo");
         dto.setStatusAtivo(sc.nextBoolean());
 
@@ -52,9 +57,11 @@ public class ColaboradorController {
         dto.setCargo(sc.nextLine());
         System.out.println("Setor: ");
         dto.setSetor(sc.nextLine());
-        LocalDate date = LocalDate.of(2020, 10, 11);
-        System.out.println("Data de admissao " + date);
-        dto.setDataAdmissao(date);
+
+        System.out.println("Data de validade (dd/MM/yyyy): ");
+        LocalDate dataAdmissao = LocalDate.parse(sc.nextLine(),date);
+        dto.setDataAdmissao(dataAdmissao);
+
         System.out.println("Status ativo");
         dto.setStatusAtivo(sc.nextBoolean());
 

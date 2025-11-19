@@ -1,3 +1,4 @@
+
 package com.projeto.sistema_epi.controller;
 
 import com.projeto.sistema_epi.dto.EpiDto;
@@ -6,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 @Component
@@ -15,6 +17,8 @@ public class EpiController {
     private final EpiService epiService;
 
     private final Scanner sc = new Scanner(System.in);
+
+    private final DateTimeFormatter date = DateTimeFormatter.ofPattern("dd/MM/yyyyy");
 
     public void cadastrarEpi(){
         EpiDto epiDto = new EpiDto();
@@ -27,8 +31,11 @@ public class EpiController {
         epiDto.setDescricao(sc.nextLine());
         System.out.println("Tamanho: ");
         epiDto.setTamanho(sc.nextLine());
-        LocalDate validade = LocalDate.of(2025, 11, 30);
-        System.out.println("Data de validade " + validade);
+
+        System.out.println("Data de validade (dd/MM/yyyy): ");
+        LocalDate validade = LocalDate.parse(sc.nextLine(),date);
+        epiDto.setValidade(validade);
+
         System.out.println("Situacao: ");
         epiDto.setSituacao(sc.nextLine());
 
@@ -41,6 +48,7 @@ public class EpiController {
         EpiDto epiDto = new EpiDto();
 
         System.out.println("Informe o id que vc deseja  atualizar da EPI: ");
+        Long idEPI = sc.nextLong();
         sc.nextLine();
 
         System.out.println("Nome do EPI: ");
@@ -51,8 +59,13 @@ public class EpiController {
         epiDto.setDescricao(sc.nextLine());
         System.out.println("Tamanho: ");
         epiDto.setTamanho(sc.nextLine());
-        LocalDate validade = LocalDate.of(2025, 11, 30);
-        System.out.println("Data de validade " + validade);
+
+        System.out.println("Data de validade (dd/MM/yyyy): ");
+        LocalDate validade = LocalDate.parse(sc.nextLine(),date);
+        epiDto.setValidade(validade);
+
+
+
         System.out.println("Situacao: ");
         epiDto.setSituacao(sc.nextLine());
 
@@ -62,11 +75,19 @@ public class EpiController {
 
     }
     public void deletar(){
+        System.out.println("Informe o id para ser excluido");
+        Long idRemover = sc.nextLong();
+
+        sc.nextLine();
 
         System.out.println("tem certeza que quer deletar (digite 'excluir' para deletar)");
         String resposta = sc.nextLine();
 
+        if (!resposta.equalsIgnoreCase("excluir")){
+            System.out.println("Exclusão cancelada.");
         }
+        epiService.deletarEpi(idRemover);
 
+        System.out.println("Colaborador removido por id!!");
     }
 }
