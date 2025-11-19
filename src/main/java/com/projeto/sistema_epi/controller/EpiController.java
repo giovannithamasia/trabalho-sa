@@ -18,7 +18,7 @@ public class EpiController {
 
     private final Scanner sc = new Scanner(System.in);
 
-    private final DateTimeFormatter date = DateTimeFormatter.ofPattern("dd/MM/yyyyy");
+    private final DateTimeFormatter date = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     public void cadastrarEpi(){
         EpiDto epiDto = new EpiDto();
@@ -63,8 +63,6 @@ public class EpiController {
         System.out.println("Data de validade (dd/MM/yyyy): ");
         LocalDate validade = LocalDate.parse(sc.nextLine(),date);
         epiDto.setValidade(validade);
-
-
 
         System.out.println("Situacao: ");
         epiDto.setSituacao(sc.nextLine());

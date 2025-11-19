@@ -16,7 +16,7 @@ public class ColaboradorController {
     private final ColaboradorService colaboradorService;
     private final Scanner sc = new Scanner(System.in);
 
-    private final DateTimeFormatter date = DateTimeFormatter.ofPattern("dd/MM/yyyyy");
+    private final DateTimeFormatter date = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     public void cadastrar(){
         ColaboradorDto dto = new ColaboradorDto();
@@ -30,7 +30,7 @@ public class ColaboradorController {
         System.out.println("Setor: ");
         dto.setSetor(sc.nextLine());
 
-        System.out.println("Data de validade (dd/MM/yyyy): ");
+        System.out.println("Data de admissao (dd/MM/yyyy): ");
         LocalDate dataAdmissao = LocalDate.parse(sc.nextLine(),date);
         dto.setDataAdmissao(dataAdmissao);
 
@@ -43,6 +43,7 @@ public class ColaboradorController {
 
         System.out.println("Colaborador cadastrado com sucesso!!");
     }
+
     public void atualizar(){
         ColaboradorDto dto = new ColaboradorDto();
 
@@ -58,7 +59,7 @@ public class ColaboradorController {
         System.out.println("Setor: ");
         dto.setSetor(sc.nextLine());
 
-        System.out.println("Data de validade (dd/MM/yyyy): ");
+        System.out.println("Data de admissao (dd/MM/yyyy): ");
         LocalDate dataAdmissao = LocalDate.parse(sc.nextLine(),date);
         dto.setDataAdmissao(dataAdmissao);
 
