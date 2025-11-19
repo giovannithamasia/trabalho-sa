@@ -41,7 +41,6 @@ public class EpiController {
         EpiDto epiDto = new EpiDto();
 
         System.out.println("Informe o id que vc deseja  atualizar da EPI: ");
-        int idEPI = sc.nextInt();
         sc.nextLine();
 
         System.out.println("Nome do EPI: ");
@@ -63,18 +62,11 @@ public class EpiController {
 
     }
     public void deletar(){
-        System.out.println("Informe o id do EPI a ser excluido");
-        int idRemoverEPI = sc.nextInt();
 
         System.out.println("tem certeza que quer deletar (digite 'excluir' para deletar)");
         String resposta = sc.nextLine();
 
-        if (resposta.equalsIgnoreCase("excluir")){
-
         }
 
-        epiService.deletarEpi(idRemoverEPI);
-
-        System.out.println("EPI removido com sucesso!!");
     }
 }

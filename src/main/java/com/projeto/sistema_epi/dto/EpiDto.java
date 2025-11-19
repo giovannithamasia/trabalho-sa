@@ -2,13 +2,13 @@ package com.projeto.sistema_epi.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.PastOrPresent;
+
 import jakarta.validation.constraints.Size;
 import lombok.*;
-import org.hibernate.annotations.ColumnTransformer;
+
 
 import java.time.LocalDate;
-import java.util.Date;
+
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,7 +18,7 @@ import java.util.Date;
 @Data
 public class EpiDto {
 
-    private int idEpi;
+    private Long idEpi;
 
     @NotBlank(message = "Nome não pode ser nulo")
     @Size(max = 120, message = "Nome pode ultrapassar 120 caracteres")

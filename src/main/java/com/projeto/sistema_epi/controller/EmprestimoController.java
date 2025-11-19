@@ -19,15 +19,7 @@ public class EmprestimoController {
     public void retirarEpi(){
         EmprestimoDto empDto = new EmprestimoDto();
 
-        System.out.println("Informe o id do colaborador que realizou o emprestimo: ");
-        empDto.setIdColaborador(sc.nextInt());
-        System.out.println("Informe o id do epi que sera retirado para emprestimo: ");
-        empDto.setIdEpi(sc.nextInt());
-        LocalDate dataEmprestimo = LocalDate.of(2025, 11, 18);
-        System.out.println("data de emprestimo " + dataEmprestimo);
         LocalDate dataPrevistaDevolucao = LocalDate.of(2025, 11, 30);
-        System.out.println("data prevista da devolução" + dataPrevistaDevolucao);
-        System.out.println("Observacao: ");
         empDto.setObservacao(sc.nextLine());
 
         emprestimoService.retirarEpi(empDto);

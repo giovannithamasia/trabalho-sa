@@ -56,7 +56,7 @@ public class EpiService {
 
         return listaDtos;
     }
-    public void atualizarEpi(int id,@Valid EpiDto epiDto){
+    public void atualizarEpi(Long id,@Valid EpiDto epiDto){
         EpiEntity epi = epiRepository.findById(id).
                 orElseThrow(() -> new RuntimeException("Epi não encontrado"));
 
@@ -70,7 +70,7 @@ public class EpiService {
         epiRepository.save(epi);
 
     }
-    public void deletarEpi(int id){
+    public void deletarEpi(Long id){
         epiRepository.findById(id).orElseThrow(() -> new RuntimeException("Epi não existe"));
 
         if (emprestimoRepository.existsByEpiIdEpi(id)){
