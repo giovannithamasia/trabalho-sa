@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Scanner;
 
 @Component
@@ -19,20 +20,22 @@ public class EmprestimoController {
     public void retirarEpi(){
         EmprestimoDto empDto = new EmprestimoDto();
 
-        System.out.println("Informe o id do colaborador que realizou o emprestimo: ");
+        System.out.println("Informe o id do colaborador: ");
         empDto.setIdColaborador(sc.nextLong());
-        System.out.println("Informe o id do epi que sera retirado para emprestimo: ");
+
+        System.out.println("Informe o id do EPI: ");
         empDto.setIdEpi(sc.nextLong());
 
-        LocalDate dataEmprestimo = LocalDate.of(2025,11,19);
+        LocalDateTime dataEmprestimo = LocalDateTime.now();
         empDto.setDataEmprestimo(dataEmprestimo);
-        System.out.println("data de emprestimo: " + dataEmprestimo);
+        System.out.println("Data de empréstimo registrada: " + dataEmprestimo);
 
         LocalDate dataPrevistaDevolucao = LocalDate.of(2025, 11, 30);
         empDto.setDataPrevistaDevolucao(dataPrevistaDevolucao);
         System.out.println("data prevista da devolução: " + dataPrevistaDevolucao);
 
-        System.out.println("Observacao: ");
+        sc.nextLine();
+        System.out.println("Observação:");
         empDto.setObservacao(sc.nextLine());
 
         emprestimoService.retirarEpi(empDto);
