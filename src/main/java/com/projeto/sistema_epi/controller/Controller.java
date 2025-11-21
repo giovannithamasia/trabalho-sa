@@ -1,9 +1,9 @@
 package com.projeto.sistema_epi.controller;
 
+import com.projeto.sistema_epi.dto.ColaboradorResponseDto;
+import com.projeto.sistema_epi.dto.EmprestimoResponseDto;
+import com.projeto.sistema_epi.dto.EpiResponseDto;
 import com.projeto.sistema_epi.menu.Menu;
-import com.projeto.sistema_epi.service.ColaboradorService;
-import com.projeto.sistema_epi.service.EmprestimoService;
-import com.projeto.sistema_epi.service.EpiService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -15,12 +15,6 @@ import java.util.Scanner;
 @Component
 @RequiredArgsConstructor
 public class Controller  implements CommandLineRunner {
-
-    private final ColaboradorService colaboradorService;
-
-    private final EpiService epi;
-
-    private final EmprestimoService emprestimoService;
 
     private final ColaboradorController colaboradorController;
 
@@ -49,7 +43,9 @@ public class Controller  implements CommandLineRunner {
                         colaboradorController.cadastrar();
                         break;
                     case 2:
-                        System.out.println(colaboradorService.listarColaboradores());
+                        for (ColaboradorResponseDto c:colaboradorController.listar()){
+                            System.out.println(c);
+                        }
                         break;
                     case 3:
                         colaboradorController.atualizar();
@@ -61,7 +57,9 @@ public class Controller  implements CommandLineRunner {
                         epiController.cadastrarEpi();
                         break;
                     case 6:
-                        System.out.println(epi.listarEPIs());
+                        for (EpiResponseDto e:epiController.listar()){
+                            System.out.println(e);
+                        }
                         break;
                     case 7:
                         epiController.atualizar();
@@ -76,12 +74,15 @@ public class Controller  implements CommandLineRunner {
                         emprestimoController.devolverEpi();
                         break;
                     case 11:
-                        System.out.println(emprestimoService.listarEmprestimos());
+                        for (EmprestimoResponseDto e: emprestimoController.listarEmprestimos()){
+                            System.out.println(e);
+                        }
                         break;
                     case 12:
                         System.out.println("Encerrando programa...");
                         break;
-
+                    default:
+                        System.out.println("Opção Invalida! Tente Novamente");
                 }
             }
             catch (Exception e){
