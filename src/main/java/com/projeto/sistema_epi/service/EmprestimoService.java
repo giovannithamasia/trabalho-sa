@@ -52,14 +52,14 @@ public class EmprestimoService {
         }
 
         if (emprestimoDto.getDataPrevistaDevolucao()
-                .isBefore(emprestimoDto.getDataEmprestimo().toLocalDate())) {
-            throw new RuntimeException("Data prevista não pode ser anterior ao empréstimo");
+                .isBefore(LocalDate.now())) {
+            throw new RuntimeException("Data prevista de devolução não pode ser anterior a data de empréstimo");
         }
 
         EmprestimoEntity entity = new EmprestimoEntity();
         entity.setColaborador(colaborador);
         entity.setEpi(epi);
-        entity.setDataEmprestimo(emprestimoDto.getDataEmprestimo());
+        entity.setDataEmprestimo(LocalDateTime.now());
         entity.setDataPrevistaDevolucao(emprestimoDto.getDataPrevistaDevolucao());
         entity.setStatus("ABERTO");
         entity.setObservacao(emprestimoDto.getObservacao());
