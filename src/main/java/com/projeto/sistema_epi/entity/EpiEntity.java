@@ -30,6 +30,7 @@ public class EpiEntity {
     @Column(name = "descricao")
     private String descricao;
 
+    @ColumnTransformer(write = "UPPER(?)")
     @Column(name = "tamanho")
     private String tamanho;
 
