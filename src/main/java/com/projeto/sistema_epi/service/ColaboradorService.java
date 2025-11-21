@@ -91,7 +91,7 @@ public class ColaboradorService {
                 .orElseThrow(() -> new RuntimeException("Colaborador não encontrado"));
 
         if (emprestimoRepository.existsByColaboradorIdColaborador(id)){
-            throw new RuntimeException("Não pode deletar colaboradores com empréstimos ativos");
+            throw new RuntimeException("Não pode deletar colaboradores com empréstimos vinculados a ele");
         }
         colaboradorRepository.deleteById(id);
     }
