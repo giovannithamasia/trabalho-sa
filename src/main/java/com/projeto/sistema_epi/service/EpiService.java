@@ -29,7 +29,7 @@ public class EpiService {
         epi.setNomeEpi(epiDto.getNome());
         epi.setTipoEpi(epiDto.getTipo());
         epi.setDescricao(epiDto.getDescricao());
-        epi.setSituacao(epiDto.getSituacao());
+        epi.setSituacao("Disponivel");
         epi.setValidade(epiDto.getValidade());
         epi.setTamanho(epiDto.getTamanho());
 
@@ -62,7 +62,7 @@ public class EpiService {
 
         epi.setNomeEpi(epiDto.getNome());
         epi.setTipoEpi(epiDto.getTipo());
-        epi.setSituacao(epiDto.getSituacao());
+        epi.setSituacao("Disponivel");
         epi.setDescricao(epiDto.getDescricao());
         epi.setTamanho(epiDto.getTamanho());
         epi.setValidade(epiDto.getValidade());
@@ -74,7 +74,7 @@ public class EpiService {
         epiRepository.findById(id).orElseThrow(() -> new RuntimeException("Epi não existe"));
 
         if (emprestimoRepository.existsByEpiIdEpi(id)){
-            throw new RuntimeException("Não pode deletar epi com empréstimos ativos");
+            throw new RuntimeException("Não pode deletar epi com empréstimos vinculados a ele");
         }
 
         epiRepository.deleteById(id);
