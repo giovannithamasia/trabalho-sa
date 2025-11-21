@@ -1,8 +1,6 @@
 package com.projeto.sistema_epi.dto;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.PastOrPresent;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
@@ -34,9 +32,7 @@ public class ColaboradorDto {
     @Size(max = 80, message = "Setor não pode ultrapassar 80 caracteres")
     private String setor;
 
-    @PastOrPresent(message = "Data de admissao não pode ser futura")
     private LocalDate dataAdmissao;
 
-    @NotNull(message = "Status não pode ser nulo")
     private boolean statusAtivo;
 }
