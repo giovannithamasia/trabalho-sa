@@ -1,12 +1,15 @@
 package com.projeto.sistema_epi.controller;
 
 import com.projeto.sistema_epi.dto.ColaboradorDto;
+import com.projeto.sistema_epi.dto.ColaboradorResponseDto;
+import com.projeto.sistema_epi.repository.ColaboradorRepository;
 import com.projeto.sistema_epi.service.ColaboradorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Scanner;
 
 @Component
@@ -15,6 +18,7 @@ public class ColaboradorController {
 
     private final ColaboradorService colaboradorService;
     private final Scanner sc = new Scanner(System.in);
+    private final ColaboradorRepository colaborador;
 
     private final DateTimeFormatter date = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
@@ -25,6 +29,12 @@ public class ColaboradorController {
         dto.setNome(sc.nextLine());
         System.out.println("Cpf: ");
         dto.setCpf(sc.nextLine());
+
+        if (colaborador.existsByCpf(dto.getCpf())) {
+            System.out.println("CPF já cadastrado");
+            return;
+        }
+
         System.out.println("Cargo: ");
         dto.setCargo(sc.nextLine());
         System.out.println("Setor: ");
@@ -43,6 +53,9 @@ public class ColaboradorController {
 
         System.out.println("Colaborador cadastrado com sucesso!!");
     }
+    public List<ColaboradorResponseDto> listar(){
+       return colaboradorService.listarColaboradores();
+    }
 
     public void atualizar(){
         ColaboradorDto dto = new ColaboradorDto();
@@ -50,6 +63,13 @@ public class ColaboradorController {
         System.out.println("Informe o id que vc deseja atualizar");
         Long id = sc.nextLong();
         sc.nextLine();
+
+
+        if (!colaborador.findById(id).isPresent()){
+            System.out.println("Colaborador não encontrado");
+            return;
+        }
+
         System.out.println("Nome do Colaborador: ");
         dto.setNome(sc.nextLine());
         System.out.println("Cpf: ");
@@ -75,17 +95,23 @@ public class ColaboradorController {
     public void deletar(){
         System.out.println("Informe o id a ser excluido");
         Long idRemover = sc.nextLong();
-
         sc.nextLine();
+
+        if (!colaborador.findById(idRemover).isPresent()){
+            System.out.println("Colaborador não encontrado");
+            return;
+        }
 
         System.out.println("tem certeza que quer deletar (digite 'excluir' para deletar)");
         String resposta = sc.nextLine();
 
         if (!resposta.equalsIgnoreCase("excluir")){
             System.out.println("Exclusão cancelada.");
+            return;
         }
-        colaboradorService.deletarColaborador(idRemover);
 
+        colaboradorService.deletarColaborador(idRemover);
         System.out.println("Colaborador removido por id!!");
+
     }
 }
