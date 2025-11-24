@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +33,9 @@ public class ColaboradorService {
             throw new RuntimeException("CPF já cadastrado");
         }
 
+        if (colaborador.getDataAdmissao().isAfter(LocalDate.now())){
+            throw new RuntimeException("Data de admissao nao pode ser futura");
+        }
 
         ColaboradorEntity colaboradorEntity = new ColaboradorEntity();
 
@@ -70,9 +74,11 @@ public class ColaboradorService {
         ColaboradorEntity colaboradorEntity = colaboradorRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Colaborador não encontrado"));
 
-
         if (colaboradorRepository.existsByCpfAndIdColaboradorNot(colaborador.getCpf(), id)) {
             throw new RuntimeException("CPF já cadastrado");
+        }
+        if (colaborador.getDataAdmissao().isAfter(LocalDate.now())){
+            throw new RuntimeException("Data de admissao nao pode ser futura");
         }
 
         colaboradorEntity.setNome(colaborador.getNome());
