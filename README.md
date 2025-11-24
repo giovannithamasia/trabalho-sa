@@ -1,3 +1,1 @@
-Cleiton Bertoldi  
-Giovanni Thamasia
-Vinicius Rover
+Cleiton Bertoldi,Giovanni Thamasia,Vinicius Rover
